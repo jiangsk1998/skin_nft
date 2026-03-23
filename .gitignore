@@ -1,0 +1,131 @@
+# ==========================
+# Solana 合约开发核心忽略项
+# ==========================
+# 1. Rust 编译产物
+target/
+**/*.rs.bk
+*.rlib
+*.so
+*.dylib
+*.dll
+*.o
+*.out
+
+# 2. Solana 部署/构建临时文件
+.anchor/
+.anchor/**.**
+dist/
+build/
+deploy/
+*.so.fresh
+*.keypair        # 私钥文件（核心！绝对不要提交）
+*.json           # 除非是合约元数据，否则部署生成的 JSON 多为临时配置
+!programs/**/*.json  # 例外：保留合约源码目录下的元数据 JSON
+.DS_Store        # macOS 系统文件
+
+# 3. 依赖缓存
+Cargo.lock       # 可选：如果是库开发建议保留，应用开发可忽略
+Cargo.bak
+.registry/
+.vendor/
+.rustup/
+.rustc/
+
+# Linux
+*~
+
+# ========== IDE 和编辑器文件 ==========
+# VS Code
+.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# RustRover (JetBrains IDE)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Visual Studio
+.vs/
+
+# Sublime Text
+*.sublime-*
+
+# ========== 环境变量和密钥 ==========
+# 环境变量文件（通常包含私钥）
+.env
+.env.local
+.env.*.local
+.secrets/
+keys/
+*.key
+*.pem
+
+# 注意：Anchor.toml 文件通常需要提交，但其中的私钥引用应该用环境变量代替
+# 示例 Anchor.toml 中的私钥配置应该类似：
+# [provider]
+# wallet = "./id.json"  # ← 这个文件不应该提交
+# 推荐做法：在 Anchor.toml 中使用环境变量
+# wallet = "${ANCHOR_WALLET}"
+
+# ========== Node.js/前端（如果项目包含前端） ==========
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dist/
+build/
+.next/
+out/
+
+# ========== 日志文件 ==========
+*.log
+logs/
+
+# ========== 临时文件 ==========
+*.tmp
+*.temp
+tmp/
+temp/
+
+# ========== Solana CLI 相关 ==========
+# Solana 配置和密钥对
+~/.config/solana/
+~/.cache/solana/
+
+# ========== 测试相关 ==========
+# 测试覆盖率报告
+coverage/
+*.lcov
+
+# ========== 构建产物 ==========
+# TypeScript 编译输出（如果使用TS）
+**/*.js
+**/*.js.map
+**/*.d.ts
+!tests/**/*.js  # 如果测试文件需要JS，可以按需调整
+
+# ========== 文档生成 ==========
+docs/_build/
+doc/
+target/doc/
+
+# ========== 特定 IDE 配置 ==========
+# JetBrains IDEs
+.idea_modules/
+
+# Eclipse
+.settings/
+.classpath
+.project
+
+# NetBeans
+nbproject/
+.anchor/test-ledger/test-ledger-log.txt
+
+Cargo.lock
+
