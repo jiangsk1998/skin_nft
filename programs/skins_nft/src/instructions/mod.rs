@@ -6,3 +6,9 @@ pub use initialize::*;
 
 pub mod add_whitelist;
 pub use add_whitelist::*;
+
+pub mod mint_nft_public;
+pub use mint_nft_public::*;
+
+pub mod mint_nft_whitelist;
+pub use mint_nft_whitelist::*;

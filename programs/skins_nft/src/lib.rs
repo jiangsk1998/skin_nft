@@ -29,4 +29,13 @@ pub mod skins_nft {
     ) -> Result<()> {
         instructions::mint_nft::handler(ctx, name, symbol, uri)
     }
+
+    pub fn mint_nft_public(
+        ctx: Context<MintNftPublic>,
+        name: String,
+        symbol: String,
+        uri: String,
+    ) -> Result<()> {
+        instructions::mint_nft_public::handler(ctx, name, symbol, uri)
+    }
 }
