@@ -28,3 +28,6 @@ pub use trans_update_auth::*;
 
 pub mod revoke_freeze_auth;
 pub use revoke_freeze_auth::*;
+
+pub mod trans_nft;
+pub use trans_nft::*;
